@@ -105,7 +105,7 @@ enum Color {
 
 }
 
-//% weight=100  color=#00A654   block="FAB-BEAM" icon="\uf067"
+//% weight=100  color=#00A654   block="EFL-BEAM" icon="\uf067"
 namespace DFRobotMaqueenPlus {
 
     export class Packeta {
@@ -146,17 +146,6 @@ namespace DFRobotMaqueenPlus {
         basic.clearScreen()
     }
 
-    /**
-     * PID control module
-     */
-    //% weight=90
-    //%block="PID switch|%pid"
-    export function PID(pid: PID): void {
-        let buf = pins.createBuffer(2);
-        buf[0] = 0x0A;
-        buf[1] = pid;
-        pins.i2cWriteBuffer(0x10, buf);
-    }
     /**
      * Motor control module
      */
