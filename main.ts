@@ -91,35 +91,30 @@ enum Color {
 
 }
 
-//% weight=100  color=#00A654   block="EFL-BEAM" icon="\uf067"
+//% weight=100  color=#00A654   block="EIUFabLab-BEAM" icon="\uf067"
 namespace EIUFabLabBEAM {
 
-    export class Packeta {
-        public mye: string;
-        public myparam: number;
-    }
-   
     /**
      *  Init I2C until success
      */
     //% weight=100
     //%block="Initialize via I2C until success"
     export function I2CInit():void{
-        let Version_v = 0;
+        let i2c_fb = 0;
         pins.i2cWriteNumber(0x10, 0x32, NumberFormat.Int8LE);
-        Version_v = pins.i2cReadNumber(0x10, NumberFormat.Int8LE);
-        while (Version_v==0){
+        i2c_fb = pins.i2cReadNumber(0x10, NumberFormat.Int8LE);
+        while (i2c_fb == 0){
             basic.showLeds(`
-                # . . . #
-                . # . # .
-                . . # . .
-                . # . # .
-                # . . . #
+                # # # # #
+                # . . . .
+                # # # # #
+                # . . . .
+                # . . . .
                 `, 10)
             basic.pause(500)
             basic.clearScreen()
             pins.i2cWriteNumber(0x10, 0x32, NumberFormat.Int8LE);
-            Version_v = pins.i2cReadNumber(0x10, NumberFormat.Int8LE);
+            i2c_fb = pins.i2cReadNumber(0x10, NumberFormat.Int8LE);
         }
         basic.showLeds(`
                 . . . . .
