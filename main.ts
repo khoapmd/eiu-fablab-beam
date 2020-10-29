@@ -5,13 +5,6 @@
  * @date  2020-10-29
  */
 
-let maqueencb: Action
-let maqueenmycb: Action
-let maqueene = "1"
-let maqueenparam = 0
-let alreadyInit = 0
-let IrPressEvent = 0
-
 enum PIN {
     P0 = 3,
     P1 = 2,
@@ -78,13 +71,6 @@ enum Sonicunit {
     Centimeters
 }
 
-enum PID {
-    //%block="OFF"
-    OFF = 0,
-    //%block="ON"
-    ON = 1
-}
-
 enum Color {
     //%block="Red"
     RED = 1,
@@ -106,7 +92,7 @@ enum Color {
 }
 
 //% weight=100  color=#00A654   block="EFL-BEAM" icon="\uf067"
-namespace DFRobotMaqueenPlus {
+namespace EIUFabLabBEAM {
 
     export class Packeta {
         public mye: string;
