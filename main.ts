@@ -117,7 +117,7 @@ namespace DFRobotMaqueenPlus {
      *  Init I2C until success
      */
     //% weight=100
-    //%block="initialize via I2C until success"
+    //%block="Initialize via I2C until success"
     export function I2CInit():void{
         let Version_v = 0;
         pins.i2cWriteNumber(0x10, 0x32, NumberFormat.Int8LE);
@@ -323,38 +323,4 @@ namespace DFRobotMaqueenPlus {
 
     }
 
-    //% advanced=true shim=maqueenIR::getParam
-    function getParam(): number {
-        return 0
-    }
-
-    /**
-     * clear the revolutions of wheel 
-     */
-    //% weight=60
-    //%block="clear the revolutions of wheel %motor" 
-    export function clearDistance(motor:Motors):void{
-        
-        switch(motor){
-            case 1: 
-                let buf1 = pins.createBuffer(2);
-                buf1[0] = 0x04;
-                buf1[1] = 0;
-                pins.i2cWriteBuffer(0x10, buf1);
-                break;
-            case 2:
-                let buf2 = pins.createBuffer(2);
-                buf2[0] = 0x06;
-                buf2[1] = 0;
-                pins.i2cWriteBuffer(0x10, buf2);
-                break;
-            default:
-                let buf3 = pins.createBuffer(4);
-                buf3[0] = 0x04;
-                buf3[1] = 0;
-                buf3[2] = 0;
-                buf3[3] = 0;
-                pins.i2cWriteBuffer(0x10, buf3);
-        }
-    }
 }
